@@ -1,17 +1,38 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color='dark'>
     <ion-title>
-      Contact
+      IonShop
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="logo-ionic" slot="start"></ion-icon>
-      @ionicframework
+  <ion-list *ngIf='products;else no_cart' no-lines>
+    <ion-item button *ngFor="let product of products">
+      <ion-avatar slot='start'>
+        <img src='{{product.item.image}}' alt='{{product.item.title}}'>
+      </ion-avatar>
+
+      <ion-label>
+        <h3>{{product.item.title}}</h3>
+        <h4>Price: ${{product.item.price}}</h4>
+
+        <p>Size: {{product.size}}</p>
+      </ion-label>
+
+      <ion-button (click)='remove(product)' color='danger' fill='clear' slot='end'>
+        <ion-icon name='trash'></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
+
+  <ng-template #no_cart>
+    <h1 id='noCart'>Cart Empty</h1>
+  </ng-template>
 </ion-content>
+
+<ion-fab *ngIf='products' vertical='bottom' horizontal='end'>
+  <ion-fab-button (click)='checkout()'>
+    <ion-icon name='card'></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -1,1 +1,19 @@
 
+#noCart {
+  text-align: center;
+}
+
+ion-fab {
+  animation-name: fadein;
+  animation-duration: 300ms;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

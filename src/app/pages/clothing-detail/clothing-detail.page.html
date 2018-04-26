@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color='dark'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/(home:home)"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-button (click)='addToFaves(clothingItem)' id='starButton' icon-only fill='clear'>
+    <ion-icon name='star'></ion-icon>
+  </ion-button>
+
+  <main *ngIf='clothingItem;else skeleton_content'>
+    <img src='{{clothingItem.image}}'>
+    <h1>{{clothingItem.title}}</h1>
+
+    <p>{{clothingItem.description}}</p>
+  </main>
+
+  <ng-template #skeleton_content>
+    <div id='skeletonImage'></div>
+
+    <ion-skeleton-text width='300px'></ion-skeleton-text>
+    <ion-skeleton-text width='350px'></ion-skeleton-text>
+    <ion-skeleton-text width='350px'></ion-skeleton-text>
+    <ion-skeleton-text width='350px'></ion-skeleton-text>
+  </ng-template>
+
+  <ion-item id='selectItem'>
+    <ion-icon name="shirt" slot="start"></ion-icon>
+    <ion-label>Size</ion-label>
+    <ion-select [(ngModel)]='size'>
+      <ion-select-option value="small" selected>Small</ion-select-option>
+      <ion-select-option value="medium">Medium</ion-select-option>
+      <ion-select-option value="large">Large</ion-select-option>
+      <ion-select-option value="XL">XL</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>
+
+<ion-fab id='buyButton' *ngIf='size' vertical='bottom' horizontal='end'>
+  <ion-fab-button (click)='addToCart(clothingItem)'>
+    <ion-icon name='cart'></ion-icon>
+  </ion-fab-button>
+</ion-fab>

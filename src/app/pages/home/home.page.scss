@@ -1,1 +1,29 @@
+.typeBar {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 10px;
 
+  ion-button {
+    margin-right: 5px;
+  }
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.gridItem {
+  text-align: center;
+  padding: 10px;
+
+  h3 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  p {
+    color: grey;
+  }
+}

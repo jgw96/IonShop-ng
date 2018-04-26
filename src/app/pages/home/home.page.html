@@ -1,10 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
+  <ion-toolbar color='dark'>
+    <ion-title>IonShop</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+<ion-content>
+  <div class='typeBar'>
+    <ion-button (click)="getProducts('mens_tshirts')" color='dark' round>Mens Tshirts</ion-button>
+    <ion-button (click)="getProducts('ladies_tshirts')" color='dark' round>Womens Tshirts</ion-button>
+    <ion-button (click)="getProducts('mens_outerwear')" color='dark' round>Mens Outerwear</ion-button>
+    <ion-button (click)="getProducts('ladies_outerwear')" color='dark' round>Womens Outerwear</ion-button>
+  </div>
+
+  <main>
+    <div class='gridItem' (click)='goToDetail(product.name)' *ngFor="let product of products">
+      <img src='{{product.image}}' alt='{{product.title}}'>
+
+      <h3>{{product.title}}</h3>
+      <p>Price: ${{product.price}}</p>
+    </div>
+  </main>
 </ion-content>
