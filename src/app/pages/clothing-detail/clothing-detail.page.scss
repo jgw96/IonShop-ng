@@ -12,6 +12,10 @@ main {
     justify-content: center;
   }
 
+  p {
+    color: grey;
+  }
+
   animation-name: fadein;
   animation-duration: 500ms;
 
@@ -32,7 +36,7 @@ main {
 }
 
 #selectItem {
-  margin-bottom: 5em;
+  margin-bottom: 2em;
 }
 
 #skeletonImage {
@@ -43,18 +47,16 @@ main {
 }
 
 #buyButton {
-  animation-name: slideup;
-  animation-duration: 500ms;
+  animation-name: expand;
+  animation-duration: 300ms;
 }
 
-@keyframes slideup {
+@keyframes expand {
   from {
-    transform: translateY(50px);
-    opacity: 0;
+    transform: scale3d(0, 0, 0);
   }
 
   to {
-    transform: translateY(0px);
-    opacity: 1;
+    transform: scale3d(1, 1, 1);
   }
 }

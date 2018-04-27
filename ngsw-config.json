@@ -6,7 +6,7 @@
       "installMode": "prefetch",
       "resources": {
         "files": ["/index.html"],
-        "versionedFiles": ["/*.bundle.css", "/*.bundle.js", "/*.chunk.js"]
+        "versionedFiles": ["/**/*.css", "/ionic/*.js", "/*.js"]
       }
     },
     {
@@ -14,7 +14,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/assets/**"]
+        "files": ["/assets/**", "/ionic/svg/*.js"]
       }
     }
   ]

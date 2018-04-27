@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 
 import { HomePage } from './home.page';
 
+import { LazyImgComponent } from '../../components/lazy-img/lazy-img.component';
+
 import { ProductService } from '../../services/product.service';
 
 @NgModule({
@@ -13,7 +15,10 @@ import { ProductService } from '../../services/product.service';
     CommonModule,
     RouterModule.forChild([{ path: '', component: HomePage }])
   ],
-  declarations: [HomePage],
+  declarations: [
+    HomePage,
+    LazyImgComponent
+  ],
   providers: [
     ProductService
   ]

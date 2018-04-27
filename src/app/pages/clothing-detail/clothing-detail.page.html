@@ -16,7 +16,20 @@
     <img src='{{clothingItem.image}}'>
     <h1>{{clothingItem.title}}</h1>
 
-    <p>{{clothingItem.description}}</p>
+    <p>${{clothingItem.price}}</p>
+
+    <ion-item id='selectItem'>
+      <ion-icon name="shirt" slot="start"></ion-icon>
+      <ion-label>Size</ion-label>
+      <ion-select [(ngModel)]='size'>
+        <ion-select-option value="small" selected>Small</ion-select-option>
+        <ion-select-option value="medium">Medium</ion-select-option>
+        <ion-select-option value="large">Large</ion-select-option>
+        <ion-select-option value="XL">XL</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <p *ngIf='cleanedDesc' innerHTML='{{cleanedDesc}}'></p>
   </main>
 
   <ng-template #skeleton_content>
@@ -27,17 +40,6 @@
     <ion-skeleton-text width='350px'></ion-skeleton-text>
     <ion-skeleton-text width='350px'></ion-skeleton-text>
   </ng-template>
-
-  <ion-item id='selectItem'>
-    <ion-icon name="shirt" slot="start"></ion-icon>
-    <ion-label>Size</ion-label>
-    <ion-select [(ngModel)]='size'>
-      <ion-select-option value="small" selected>Small</ion-select-option>
-      <ion-select-option value="medium">Medium</ion-select-option>
-      <ion-select-option value="large">Large</ion-select-option>
-      <ion-select-option value="XL">XL</ion-select-option>
-    </ion-select>
-  </ion-item>
 </ion-content>
 
 <ion-fab id='buyButton' *ngIf='size' vertical='bottom' horizontal='end'>

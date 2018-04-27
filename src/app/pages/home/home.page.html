@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color='dark'>
-    <ion-title>IonShop</ion-title>
+    <ion-title class='centerTitle'>IonShop</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
 
   <main>
     <div class='gridItem' (click)='goToDetail(product.name)' *ngFor="let product of products">
-      <img src='{{product.image}}' alt='{{product.title}}'>
+      <app-lazy-img src='{{product.image}}' alt='{{product.title}}'></app-lazy-img>
 
       <h3>{{product.title}}</h3>
       <p>Price: ${{product.price}}</p>

@@ -4,16 +4,16 @@
 }
 
 ion-fab {
-  animation-name: fadein;
+  animation-name: expand;
   animation-duration: 300ms;
 }
 
-@keyframes fadein {
+@keyframes expand {
   from {
-    opacity: 0;
+    transform: scale3d(0, 0, 0);
   }
 
   to {
-    opacity: 1;
+    transform: scale3d(1, 1, 1);
   }
 }
