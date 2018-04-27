@@ -27,8 +27,6 @@ export class LazyImgComponent implements AfterViewInit {
   }
 
   addIntersectionObserver() {
-    console.log('here');
-
     if ('IntersectionObserver' in window) {
       this.io = new IntersectionObserver((data: any) => {
         // because there will only ever be one instance

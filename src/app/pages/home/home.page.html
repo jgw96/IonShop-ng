@@ -13,8 +13,8 @@
   </div>
 
   <main>
-    <div class='gridItem' (click)='goToDetail(product.name)' *ngFor="let product of products">
-      <app-lazy-img src='{{product.image}}' alt='{{product.title}}'></app-lazy-img>
+    <div class='gridItem' (click)='goToDetail(product.name)' *ngFor="let product of products | async">
+      <app-lazy-img [src]='product.image' [alt]='product.title'></app-lazy-img>
 
       <h3>{{product.title}}</h3>
       <p>Price: ${{product.price}}</p>

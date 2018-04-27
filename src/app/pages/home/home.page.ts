@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProductService } from '../../services/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-home',
@@ -10,13 +11,12 @@ import { ProductService } from '../../services/product.service';
 })
 export class HomePage implements OnInit {
 
-  products: any[] = [];
+  products: Observable<any>;
   category = 'mens_tshirts';
 
   constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit() {
-    console.log('here');
     this.getProducts(this.category);
   }
 
@@ -26,15 +26,6 @@ export class HomePage implements OnInit {
 
   getProducts(type: string) {
     this.category = type;
-    console.log(type);
-    this.productService.getProducts(type).subscribe(
-      data => {
-        console.log(data);
-        this.products = data;
-      },
-      err => {
-        console.error(err);
-      }
-    );
+    this.products = this.productService.getProducts(type);
   }
 }

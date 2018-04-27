@@ -7,8 +7,6 @@ import { HomePage } from './home.page';
 
 import { LazyImgComponent } from '../../components/lazy-img/lazy-img.component';
 
-import { ProductService } from '../../services/product.service';
-
 @NgModule({
   imports: [
     IonicModule,
@@ -18,9 +16,6 @@ import { ProductService } from '../../services/product.service';
   declarations: [
     HomePage,
     LazyImgComponent
-  ],
-  providers: [
-    ProductService
   ]
 })
 export class HomePageModule {}

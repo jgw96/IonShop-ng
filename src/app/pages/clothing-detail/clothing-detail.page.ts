@@ -2,7 +2,6 @@ import { ToastController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -23,20 +22,17 @@ export class ClothingDetailPage {
   ) { }
 
   ionViewDidEnter() {
-    this.route.paramMap.subscribe((params: Params) => {
-      const cat = params.get('category');
-      const item = params.get('item');
+    const { category, item } = this.route.snapshot.params;
 
-      this.productService.getProducts(cat).subscribe(
-        items => {
-          this.clothingItem = items.filter(clothing => clothing.name === item)[0];
-          this.cleanedDesc = this.unescapeText(this.clothingItem.description);
-        },
-        err => {
-          console.error(err);
-        }
-      );
-    });
+    this.productService.getProducts(category).subscribe(
+      items => {
+        this.clothingItem = items.filter(clothing => clothing.name === item)[0];
+        this.cleanedDesc = this.unescapeText(this.clothingItem.description);
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 
   unescapeText(text) {

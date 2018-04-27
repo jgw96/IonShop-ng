@@ -15,7 +15,7 @@ export class AboutPage {
 
   ionViewDidEnter() {
     const productsData = this.productService.get('faves');
-    if (productsData.length > 0) {
+    if (productsData && productsData.length > 0) {
       this.products = productsData;
     }
   }
