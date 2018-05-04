@@ -5,14 +5,18 @@ import { CommonModule } from '@angular/common';
 import { AboutPage } from './about.page';
 
 import { ProductService } from '../../services/product.service';
+import { SavedItemModule } from '../../components/saved-item/saved-item.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
-    RouterModule.forChild([{ path: '', component: AboutPage }])
+    RouterModule.forChild([{ path: '', component: AboutPage }]),
+    SavedItemModule
   ],
-  declarations: [AboutPage],
+  declarations: [
+    AboutPage
+  ],
   providers: [
     ProductService
   ]

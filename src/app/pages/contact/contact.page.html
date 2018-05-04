@@ -8,7 +8,7 @@
 
 <ion-content>
   <ion-list *ngIf='products;else no_cart' no-lines>
-    <ion-item button *ngFor="let product of products">
+    <!--<ion-item button *ngFor="let product of products" @flyout>
       <ion-avatar slot='start'>
         <img src='{{product.item.image}}' alt='{{product.item.title}}'>
       </ion-avatar>
@@ -21,9 +21,11 @@
       </ion-label>
 
       <ion-button (click)='remove(product)' color='danger' fill='clear' slot='end'>
-        <ion-icon name='trash'></ion-icon>
+        <ion-icon id='closeIcon' name='close'></ion-icon>
       </ion-button>
-    </ion-item>
+    </ion-item>-->
+
+    <app-saved-item type='cart' (deleted)="deleted()" *ngFor='let product of products' [product]="product"></app-saved-item>
   </ion-list>
 
   <ng-template #no_cart>

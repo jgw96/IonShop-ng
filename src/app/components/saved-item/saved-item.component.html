@@ -1,0 +1,16 @@
+<ion-item button @flyout>
+  <ion-avatar slot='start'>
+    <img src='{{product.item.image}}' alt='{{product.item.title}}'>
+  </ion-avatar>
+
+  <ion-label>
+    <h2>{{product.item.title}}</h2>
+    <h4>Price: ${{product.item.price}}</h4>
+
+    <p>Size: {{product.size}}</p>
+  </ion-label>
+
+  <ion-button (click)='remove(product)' color='danger' fill='clear' slot='end'>
+    <ion-icon id='closeIcon' name='close'></ion-icon>
+  </ion-button>
+</ion-item>

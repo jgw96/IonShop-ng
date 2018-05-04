@@ -6,10 +6,18 @@
 
 <ion-content>
   <div class='typeBar'>
-    <ion-button (click)="getProducts('mens_tshirts')" color='dark' round>Mens Tshirts</ion-button>
-    <ion-button (click)="getProducts('ladies_tshirts')" color='dark' round>Womens Tshirts</ion-button>
-    <ion-button (click)="getProducts('mens_outerwear')" color='dark' round>Mens Outerwear</ion-button>
-    <ion-button (click)="getProducts('ladies_outerwear')" color='dark' round>Womens Outerwear</ion-button>
+    <div class='typeSelect' [class.selected]='category === "mens_tshirts"' (click)="getProducts('mens_tshirts')">
+      <div>Mens Tshirts</div>
+    </div>
+    <div class='typeSelect' [class.selected]='category === "ladies_tshirts"' (click)="getProducts('ladies_tshirts')">
+      <div>Womens Tshirts</div>
+    </div>
+    <div class='typeSelect' [class.selected]='category === "mens_outerwear"' (click)="getProducts('mens_outerwear')">
+      <div>Mens Outerwear</div>
+    </div>
+    <div class='typeSelect' [class.selected]='category === "ladies_outerwear"' (click)="getProducts('ladies_outerwear')">
+      <div>Womens Outerwear</div>
+    </div>
   </div>
 
   <main>

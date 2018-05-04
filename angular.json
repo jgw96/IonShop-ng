@@ -53,6 +53,23 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
+              "buildOptimizer": true
+            },
+            "pwa": {
+              "fileReplacements": [
+                {
+                  "src": "src/environments/environment.ts",
+                  "replaceWith": "src/environments/environment.pwa.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
               "buildOptimizer": true,
               "serviceWorker": true
             }

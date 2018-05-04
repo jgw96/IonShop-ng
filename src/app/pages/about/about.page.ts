@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { ProductService } from '../../services/product.service';
 
+import { SavedItem } from '../../interfaces/saved-item';
+
 @Component({
   selector: 'app-page-about',
   templateUrl: 'about.page.html',
@@ -9,19 +11,22 @@ import { ProductService } from '../../services/product.service';
 })
 export class AboutPage {
 
-  products: any[];
+  products: SavedItem[];
 
   constructor(private productService: ProductService) {}
 
   ionViewDidEnter() {
+    this.getProducts();
+  }
+
+  getProducts() {
     const productsData = this.productService.get('faves');
     if (productsData && productsData.length > 0) {
       this.products = productsData;
     }
   }
 
-  remove(item) {
-    this.productService.remove('faves', item);
-    this.products = this.productService.get('faves');
+  deleted() {
+    this.getProducts();
   }
 }

@@ -1,8 +1,10 @@
-import { ToastController } from '@ionic/angular';
+import { ToastController, ActionSheetController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { ProductService } from '../../services/product.service';
+
+import { ClothingItem } from '../../interfaces/clothing-item';
 
 @Component({
   selector: 'app-clothing-detail',
@@ -11,14 +13,16 @@ import { ProductService } from '../../services/product.service';
 })
 export class ClothingDetailPage {
 
-  clothingItem: any;
+  clothingItem: ClothingItem;
   cleanedDesc: string;
-  size: string;
+  savedState = 'star-outline';
+  size = 'medium';
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private actionSheetCtrl: ActionSheetController
   ) { }
 
   ionViewDidEnter() {
@@ -27,6 +31,7 @@ export class ClothingDetailPage {
     this.productService.getProducts(category).subscribe(
       items => {
         this.clothingItem = items.filter(clothing => clothing.name === item)[0];
+        console.log(this.clothingItem);
         this.cleanedDesc = this.unescapeText(this.clothingItem.description);
       },
       err => {
@@ -54,6 +59,7 @@ export class ClothingDetailPage {
 
   async addToFaves(item) {
     console.log('here');
+    this.savedState = 'star';
     this.productService.save('faves', { 'item': item, 'size': this.size || 'none' });
 
     const toast = await this.toastCtrl.create({
@@ -61,5 +67,39 @@ export class ClothingDetailPage {
       duration: 1500
     });
     await toast.present();
+  }
+
+  async pickSize() {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Size',
+      buttons: [
+        {
+          text: 'Small',
+          handler: () => {
+            this.size = 'small';
+          }
+        },
+        {
+          text: 'Medium',
+          handler: () => {
+            this.size = 'medium';
+          }
+        },
+        {
+          text: 'Large',
+          handler: () => {
+            this.size = 'large';
+          }
+        },
+        {
+          text: 'X-large',
+          handler: () => {
+            this.size = 'x-large';
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
   }
 }

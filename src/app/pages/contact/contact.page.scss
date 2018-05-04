@@ -8,6 +8,10 @@ ion-fab {
   animation-duration: 300ms;
 }
 
+#closeIcon {
+  font-size: 1.8em;
+}
+
 @keyframes expand {
   from {
     transform: scale3d(0, 0, 0);

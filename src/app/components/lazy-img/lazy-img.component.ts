@@ -7,7 +7,7 @@ import { Component, Input, AfterViewInit, ViewChild, ElementRef } from '@angular
 })
 export class LazyImgComponent implements AfterViewInit {
 
-  @Input() src: string;
+  @Input() src = '';
   @Input() alt: string;
 
   @ViewChild('lazyImg') lazyImg: ElementRef;

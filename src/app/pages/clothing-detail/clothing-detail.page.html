@@ -9,24 +9,18 @@
 
 <ion-content padding>
   <ion-button (click)='addToFaves(clothingItem)' id='starButton' icon-only fill='clear'>
-    <ion-icon name='star'></ion-icon>
+    <ion-icon id='saveIcon' [name]='savedState'></ion-icon>
   </ion-button>
 
   <main *ngIf='clothingItem;else skeleton_content'>
     <img src='{{clothingItem.image}}'>
     <h1>{{clothingItem.title}}</h1>
 
-    <p>${{clothingItem.price}}</p>
+    <p id='price'>${{clothingItem.price}}</p>
 
-    <ion-item id='selectItem'>
-      <ion-icon name="shirt" slot="start"></ion-icon>
-      <ion-label>Size</ion-label>
-      <ion-select [(ngModel)]='size'>
-        <ion-select-option value="small" selected>Small</ion-select-option>
-        <ion-select-option value="medium">Medium</ion-select-option>
-        <ion-select-option value="large">Large</ion-select-option>
-        <ion-select-option value="XL">XL</ion-select-option>
-      </ion-select>
+    <ion-item (click)="pickSize()" id='selectItem'>
+      <ion-icon name='shirt' slot='start'></ion-icon>
+      <ion-label>{{size}}</ion-label>
     </ion-item>
 
     <p *ngIf='cleanedDesc' innerHTML='{{cleanedDesc}}'></p>

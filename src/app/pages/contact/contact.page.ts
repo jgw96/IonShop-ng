@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
+import { ActionSheetController } from '@ionic/angular';
 
 import { ProductService } from '../../services/product.service';
+import { SavedItem } from '../../interfaces/saved-item';
+import { SavedItemComponent } from '../../components/saved-item/saved-item.component';
+
 
 @Component({
   selector: 'app-page-contact',
@@ -9,16 +13,29 @@ import { ProductService } from '../../services/product.service';
 })
 export class ContactPage {
 
-  products: any[];
+  products: SavedItem[];
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private actionSheetCtrl: ActionSheetController
+  ) {}
 
   ionViewDidEnter() {
+    this.getProducts();
+  }
+
+  getProducts() {
     const productData = this.productService.get('cart');
     if (productData.length > 0) {
       this.products = productData;
-      console.log(this.products);
+    } else {
+      this.products = null;
     }
+  }
+
+  deleted() {
+    console.log('something was deleted');
+    this.getProducts();
   }
 
   checkout() {
@@ -55,16 +72,12 @@ export class ContactPage {
     let price = 0;
 
     this.products.forEach((product) => {
+      console.log(product);
       const cost = product.item.price;
       price = price + cost;
     });
 
     console.log(price);
     return price;
-  }
-
-  remove(item) {
-    this.productService.remove('cart', item);
-    this.products = this.productService.get('cart');
   }
 }

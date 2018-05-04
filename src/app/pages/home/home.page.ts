@@ -26,6 +26,7 @@ export class HomePage implements OnInit {
 
   getProducts(type: string) {
     this.category = type;
+    console.log(this.category);
     this.products = this.productService.getProducts(type);
   }
 }

@@ -12,8 +12,9 @@ main {
     justify-content: center;
   }
 
-  p {
+  #price {
     color: grey;
+    font-size: 1.2em;
   }
 
   animation-name: fadein;
@@ -59,4 +60,9 @@ main {
   to {
     transform: scale3d(1, 1, 1);
   }
+}
+
+
+#saveIcon {
+  font-size: 1.8em;
 }

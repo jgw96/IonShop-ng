@@ -18,3 +18,9 @@
 .centerTitle .toolbar-title-md {
   text-align: center;
 }
+
+app-page-home {
+  ion-scroll {
+    background-color: #f1f1f1 !important;
+  }
+}
