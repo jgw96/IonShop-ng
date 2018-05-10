@@ -2,6 +2,9 @@ import { ToastController, ActionSheetController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
+import { Plugins } from '@capacitor/core';
+const { Share } = Plugins;
+
 import { ProductService } from '../../services/product.service';
 
 import { ClothingItem } from '../../interfaces/clothing-item';
@@ -55,6 +58,28 @@ export class ClothingDetailPage {
       duration: 1500
     });
     await toast.present();
+  }
+
+  async share(item) {
+    console.log(item);
+
+    try {
+      // use the web API in the browser
+      console.log('i have the web share api');
+      await (navigator as any).share({
+        title: 'Clothes on IonShop',
+        text: `Check this out, ${item.title}`,
+        url: window.location.href,
+      });
+    } catch (e) {
+      console.log('gotta do native stuff');
+      await Share.share({
+        title: 'Clothes on IonShop',
+        text: `Check this out, ${item.title}`,
+        url: window.location.href,
+        dialogTitle: 'Share'
+      });
+    }
   }
 
   async addToFaves(item) {

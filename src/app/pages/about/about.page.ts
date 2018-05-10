@@ -21,8 +21,10 @@ export class AboutPage {
 
   getProducts() {
     const productsData = this.productService.get('faves');
-    if (productsData && productsData.length > 0) {
+    if (productsData.length > 0) {
       this.products = productsData;
+    } else {
+      this.products = null;
     }
   }
 

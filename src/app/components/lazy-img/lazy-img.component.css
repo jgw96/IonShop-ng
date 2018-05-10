@@ -1,3 +1,11 @@
+:host {
+  height: 186px;
+  display: block;
+  contain: strict;
+}
+
 img {
   height: 186px;
+  visibility: hidden;
+  object-fit: cover;
 }

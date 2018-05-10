@@ -37,7 +37,16 @@
 </ion-content>
 
 <ion-fab id='buyButton' *ngIf='size' vertical='bottom' horizontal='end'>
-  <ion-fab-button (click)='addToCart(clothingItem)'>
-    <ion-icon name='cart'></ion-icon>
+  <ion-fab-button>
+    <ion-icon name='more'></ion-icon>
   </ion-fab-button>
+
+  <ion-fab-list side="top">
+    <ion-fab-button color='primary' (click)='addToCart(clothingItem)'>
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color='secondary' (click)="share(clothingItem)">
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
 </ion-fab>

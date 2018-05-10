@@ -1,0 +1,6 @@
+{
+  "appId": "com.ionshop.app",
+  "appName": "IonShop-ng",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}

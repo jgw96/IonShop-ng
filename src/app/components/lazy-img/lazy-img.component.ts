@@ -13,6 +13,7 @@ export class LazyImgComponent implements AfterViewInit {
   @ViewChild('lazyImg') lazyImg: ElementRef;
 
   io: IntersectionObserver;
+  loaded = 'hidden';
 
   constructor() { }
 
@@ -23,6 +24,10 @@ export class LazyImgComponent implements AfterViewInit {
   handleImage() {
     if (!this.lazyImg.nativeElement.src) {
       this.lazyImg.nativeElement.src = this.src;
+
+      this.lazyImg.nativeElement.addEventListener('load', () => {
+        this.loaded = 'inherit';
+      });
     }
   }
 
