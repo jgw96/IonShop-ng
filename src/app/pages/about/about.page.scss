@@ -2,3 +2,10 @@
 #noFave {
   text-align: center;
 }
+
+@media(min-width: 1000px) {
+  main {
+    margin-left: 10em;
+    margin-right: 10em;
+  }
+}

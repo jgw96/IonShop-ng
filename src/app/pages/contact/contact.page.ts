@@ -1,4 +1,5 @@
 import { Component, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
 
 import { ProductService } from '../../services/product.service';
@@ -17,8 +18,15 @@ export class ContactPage {
 
   constructor(
     private productService: ProductService,
-    private actionSheetCtrl: ActionSheetController
-  ) {}
+    private actionSheetCtrl: ActionSheetController,
+    private router: Router
+  ) {
+    this.router.events.subscribe(
+      value => {
+        this.getProducts();
+      }
+    );
+  }
 
   ionViewDidEnter() {
     this.getProducts();

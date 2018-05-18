@@ -12,6 +12,13 @@ ion-fab {
   font-size: 1.8em;
 }
 
+@media(min-width: 1000px) {
+  main {
+    margin-left: 10em;
+    margin-right: 10em;
+  }
+}
+
 @keyframes expand {
   from {
     transform: scale3d(0, 0, 0);

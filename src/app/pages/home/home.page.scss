@@ -37,3 +37,17 @@ main {
     font-weight: bold;
   }
 }
+
+@media(min-width: 750px) {
+  .typeBar {
+    justify-content: center;
+  }
+}
+
+@media(min-width: 1000px) {
+  main {
+    margin-left: 10em;
+    margin-right: 10em;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}

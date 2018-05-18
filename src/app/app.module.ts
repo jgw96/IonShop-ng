@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { RouterModule, RouteReuseStrategy } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
       enabled: environment.pwa
     })
   ],
-  providers: [],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

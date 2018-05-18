@@ -5,26 +5,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngIf='products;else no_faves' no-lines>
-    <!--<ion-item button *ngFor="let product of products">
-      <ion-avatar slot='start'>
-        <img src='{{product.item.image}}' alt='{{product.item.title}}'>
-      </ion-avatar>
+  <main>
+    <ion-list *ngIf='products;else no_faves' no-lines>
+      <app-saved-item type='faves' (deleted)="deleted()" *ngFor='let product of products' [product]="product"></app-saved-item>
+    </ion-list>
 
-      <ion-label>
-        <h3>{{product.item.title}}</h3>
-        <p>Price: ${{product.item.price}}</p>
-      </ion-label>
-
-      <ion-button (click)='remove(product)' color='danger' fill='clear' slot='end'>
-        <ion-icon name='trash'></ion-icon>
-      </ion-button>
-    </ion-item>-->
-
-    <app-saved-item type='faves' (deleted)="deleted()" *ngFor='let product of products' [product]="product"></app-saved-item>
-  </ion-list>
-
-  <ng-template #no_faves>
-    <h1 id='noFave'>No Favorites yet</h1>
-  </ng-template>
+    <ng-template #no_faves>
+      <h1 id='noFave'>No Favorites yet</h1>
+    </ng-template>
+  </main>
 </ion-content>

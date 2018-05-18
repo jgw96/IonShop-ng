@@ -1,4 +1,4 @@
-main {
+#contentDiv {
   display: flex;
   flex-direction: column;
 
@@ -50,6 +50,13 @@ main {
 #buyButton {
   animation-name: expand;
   animation-duration: 300ms;
+}
+
+@media(min-width: 1000px) {
+  main {
+    margin-left: 10em;
+    margin-right: 10em;
+  }
 }
 
 @keyframes expand {

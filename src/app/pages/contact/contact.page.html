@@ -7,30 +7,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngIf='products;else no_cart' no-lines>
-    <!--<ion-item button *ngFor="let product of products" @flyout>
-      <ion-avatar slot='start'>
-        <img src='{{product.item.image}}' alt='{{product.item.title}}'>
-      </ion-avatar>
+  <main>
+    <ion-list *ngIf='products;else no_cart' no-lines>
+      <app-saved-item type='cart' (deleted)="deleted()" *ngFor='let product of products' [product]="product"></app-saved-item>
+    </ion-list>
 
-      <ion-label>
-        <h3>{{product.item.title}}</h3>
-        <h4>Price: ${{product.item.price}}</h4>
+    <ng-template #no_cart>
+      <h1 id='noCart'>Cart Empty</h1>
+    </ng-template>
 
-        <p>Size: {{product.size}}</p>
-      </ion-label>
-
-      <ion-button (click)='remove(product)' color='danger' fill='clear' slot='end'>
-        <ion-icon id='closeIcon' name='close'></ion-icon>
-      </ion-button>
-    </ion-item>-->
-
-    <app-saved-item type='cart' (deleted)="deleted()" *ngFor='let product of products' [product]="product"></app-saved-item>
-  </ion-list>
-
-  <ng-template #no_cart>
-    <h1 id='noCart'>Cart Empty</h1>
-  </ng-template>
+  </main>
 </ion-content>
 
 <ion-fab *ngIf='products' vertical='bottom' horizontal='end'>

@@ -8,11 +8,12 @@
 </ion-header>
 
 <ion-content padding>
+  <main>
   <ion-button (click)='addToFaves(clothingItem)' id='starButton' icon-only fill='clear'>
     <ion-icon id='saveIcon' [name]='savedState'></ion-icon>
   </ion-button>
 
-  <main *ngIf='clothingItem;else skeleton_content'>
+  <div id='contentDiv' *ngIf='clothingItem;else skeleton_content'>
     <img src='{{clothingItem.image}}'>
     <h1>{{clothingItem.title}}</h1>
 
@@ -24,7 +25,7 @@
     </ion-item>
 
     <p *ngIf='cleanedDesc' innerHTML='{{cleanedDesc}}'></p>
-  </main>
+  </div>
 
   <ng-template #skeleton_content>
     <div id='skeletonImage'></div>
@@ -34,6 +35,7 @@
     <ion-skeleton-text width='350px'></ion-skeleton-text>
     <ion-skeleton-text width='350px'></ion-skeleton-text>
   </ng-template>
+  </main>
 </ion-content>
 
 <ion-fab id='buyButton' *ngIf='size' vertical='bottom' horizontal='end'>
